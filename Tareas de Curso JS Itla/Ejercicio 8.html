@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <h2>leer un numero entero y si es multiplo de 4 mostrar en pantalla su mitad, si es multiplo de 5 mostrar en pantalla
+         su cuadrado y si es multiplo de 6 mostrar en pantalla su primer digito asumir que el numero no es mayo que 100</h2>
+    <label for="numeroInput">Ingrese un número entero:</label>
+    <input type="number" id="numeroInput" min="1" max="99"><br><br>
+  
+    <button onclick="realizarOperacion()">Realizar Operación</button><br><br>
+  
+    <p id="resultado"></p>
+    <a href="interfaz1.html">Inicio</a>
+  
+    <script>
+      function realizarOperacion() {
+        const numero = parseInt(document.getElementById('numeroInput').value);
+  
+        const resultado = document.getElementById('resultado');
+  
+        if (numero % 4 === 0) {
+          const mitad = numero / 2;
+          resultado.textContent = `El número es múltiplo de 4, su mitad es: ${mitad}`;
+        } else if (numero % 5 === 0) {
+          const cuadrado = numero * numero;
+          resultado.textContent = `El número es múltiplo de 5, su cuadrado es: ${cuadrado}`;
+        } else if (numero % 6 === 0) {
+          const primerDigito = parseInt(numero.toString()[0]);
+          resultado.textContent = `El número es múltiplo de 6, su primer dígito es: ${primerDigito}`;
+        } else {
+          resultado.textContent = `El número no es múltiplo de 4, 5 ni 6.`;
+        }
+      }
+    </script>
+</body>
+</html>

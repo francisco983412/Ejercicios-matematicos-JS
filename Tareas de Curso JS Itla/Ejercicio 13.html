@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <h2>leer 2 numeros enteros y determinar cual de los dos tiene mayor cantidad de digitos</h2>
+  <label for="numero1Input">Ingrese el primer número entero:</label>
+  <input type="number" id="numero1Input" min="0"><br><br>
+
+  <label for="numero2Input">Ingrese el segundo número entero:</label>
+  <input type="number" id="numero2Input" min="0"><br><br>
+
+  <button onclick="compararDigitos()">Comparar</button><br><br>
+
+  <p id="resultado"></p>
+  <a href="interfaz1.html">Inicio</a>
+
+  <script>
+    function compararDigitos() {
+      const numero1 = document.getElementById('numero1Input').value;
+      const numero2 = document.getElementById('numero2Input').value;
+
+      const longitudNumero1 = numero1.toString().length;
+      const longitudNumero2 = numero2.toString().length;
+
+      const resultado = document.getElementById('resultado');
+      
+      if (longitudNumero1 > longitudNumero2) {
+        resultado.textContent = `El primer número tiene más dígitos (${longitudNumero1}) que el segundo número (${longitudNumero2}).`;
+      } else if (longitudNumero1 < longitudNumero2) {
+        resultado.textContent = `El segundo número tiene más dígitos (${longitudNumero2}) que el primer número (${longitudNumero1}).`;
+      } else {
+        resultado.textContent = `Ambos números tienen la misma cantidad de dígitos (${longitudNumero1}).`;
+      }
+    }
+  </script>
+</body>
+</html>

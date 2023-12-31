@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <div>
+        <h2>leer un numero entero y si es multiplo de 4 determinar si su ultimo digito es primo</h2>
+        <label for="numeroInput">Ingrese un número entero:</label>
+        <input type="number" id="numeroInput"><br><br>
+      
+        <button onclick="verificarMultiploUltimoPrimo()">Verificar</button><br><br>
+      
+        <p id="resultado"></p>
+        <a href="interfaz1.html">Inicio</a>
+      
+        <script>
+          function esPrimo(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i * i <= num; i++) {
+              if (num % i === 0) return false;
+            }
+            return true;
+          }
+      
+          function verificarMultiploUltimoPrimo() {
+            const numero = parseInt(document.getElementById('numeroInput').value);
+      
+            const resultado = document.getElementById('resultado');
+      
+            if (numero % 4 === 0) {
+              const ultimoDigito = Math.abs(numero % 10);
+      
+              if (esPrimo(ultimoDigito)) {
+                resultado.textContent = `El número ${numero} es múltiplo de 4 y su último dígito (${ultimoDigito}) es primo.`;
+              } else {
+                resultado.textContent = `El número ${numero} es múltiplo de 4 pero su último dígito (${ultimoDigito}) no es primo.`;
+              }
+            } else {
+              resultado.textContent = `El número ${numero} no es múltiplo de 4.`;
+            }
+          }
+        </script>
+</body>
+</html>

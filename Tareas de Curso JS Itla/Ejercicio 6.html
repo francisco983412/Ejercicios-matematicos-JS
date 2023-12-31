@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <div>
+        <h2>leer un numero entero y si es menor que 100 determinar si es primo </h2>
+        <label for="numeroInput">Ingrese un número menor que 100:</label>
+        <input type="number" id="numeroInput" min="1" max="99"><br><br>
+      
+        <button onclick="verificarPrimo()">Verificar</button><br><br>
+      
+        <p id="resultado"></p>
+        <a href="interfaz1.html">Inicio</a>
+      
+        <script>
+          function esPrimo(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i * i <= num; i++) {
+              if (num % i === 0) return false;
+            }
+            return true;
+          }
+      
+          function verificarPrimo() {
+            const numero = parseInt(document.getElementById('numeroInput').value);
+      
+            const resultado = document.getElementById('resultado');
+      
+            if (numero < 100) {
+              if (esPrimo(numero)) {
+                resultado.textContent = `El número ${numero} es primo.`;
+              } else {
+                resultado.textContent = `El número ${numero} no es primo.`;
+              }
+            } else {
+              resultado.textContent = 'Por favor, ingrese un número menor que 100.';
+            }
+          }
+        </script>
+</body>
+</html>

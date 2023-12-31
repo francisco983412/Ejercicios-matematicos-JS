@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <h2>leer un numero entero y mostrar todos sus componentes numericos o sea aquellos para quienes el sea multiplo </h2>
+    <label for="numeroInput">Ingrese un número entero:</label>
+    <input type="number" id="numeroInput"><br><br>
+  
+    <button onclick="mostrarComponentesNumericos()">Mostrar</button><br><br>
+  
+    <p id="resultado"></p>
+    <a href="interfaz1.html">Inicio</a>
+  
+    <script>
+      function mostrarComponentesNumericos() {
+        const numero = parseInt(document.getElementById('numeroInput').value);
+  
+        let componentesNumericos = [];
+  
+        for (let i = 1; i <= numero; i++) {
+          if (numero % i === 0) {
+            componentesNumericos.push(i);
+          }
+        }
+  
+        const resultado = document.getElementById('resultado');
+        resultado.textContent = `Los componentes numéricos del número son: ${componentesNumericos.join(', ')}`;
+      }
+    </script>
+</body>
+</html>

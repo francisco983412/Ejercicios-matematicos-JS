@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <h2>leer 10 numeros enteros, almacenarlos  es un vector y determinar si la semisuma entre el valor mayor y el valor menor es un numero primo</h2>
+
+  <label for="vectorInput">Ingrese 10 números enteros separados por comas:</label>
+  <input type="text" id="vectorInput"><br><br>
+
+  <button onclick="verificarSemisumaPrima()">Calcular</button><br><br>
+
+  <p id="resultado"></p>
+  <a href="interfaz1.html">Inicio</a>
+  <script>
+    function esPrimo(numero) {
+      if (numero <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(numero); i++) {
+        if (numero % i === 0) return false;
+      }
+      return true;
+    }
+
+    function verificarSemisumaPrima() {
+      const vectorInput = document.getElementById('vectorInput').value;
+      const numeros = vectorInput.split(',').map(Number);
+
+      const maximo = Math.max(...numeros);
+      const minimo = Math.min(...numeros);
+
+      const semisuma = (maximo + minimo) / 2;
+
+      const resultado = document.getElementById('resultado');
+      if (esPrimo(semisuma)) {
+        resultado.textContent = `La semisuma entre el mayor y menor es un número primo: ${semisuma}`;
+      } else {
+        resultado.textContent = `La semisuma entre el mayor y menor NO es un número primo: ${semisuma}`;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <div>
+        <h2>leer 10 numeros enteros, almacenarlos en un vector. Luego leer un entero y determinar cuantos numeros de los almacenados en el vector 
+          terminan en el mismo digito que el ultimo valor leido       </h2>
+
+        <label for="vectorInput">Ingrese 10 números enteros (separados por comas):</label>
+        <input type="text" id="vectorInput"><br><br>
+      
+        <label for="numeroInput">Ingrese un número entero:</label>
+        <input type="number" id="numeroInput"><br><br>
+      
+        <button onclick="compararDigitos()">Comparar</button><br><br>
+      
+        <p id="resultado"></p>
+        <a href="interfaz1.html">Inicio</a>
+      
+        <script>
+          function compararDigitos() {
+            const vectorInput = document.getElementById('vectorInput').value;
+            const numeros = vectorInput.split(',').map(Number);
+      
+            if (numeros.length !== 10) {
+              alert('Por favor, ingrese 10 números separados por comas.');
+              return;
+            }
+      
+            const ultimoNumero = parseInt(document.getElementById('numeroInput').value);
+            const ultimoDigito = ultimoNumero % 10; // Obtener el último dígito del número
+      
+            let cantidadNumerosConMismoDigito = 0;
+      
+            for (let num of numeros) {
+              const digito = num % 10; // Obtener el último dígito del número del vector
+              if (digito === ultimoDigito) {
+                cantidadNumerosConMismoDigito++;
+              }
+            }
+      
+            const resultado = document.getElementById('resultado');
+            resultado.textContent = `Cantidad de números del vector con el mismo último dígito: ${cantidadNumerosConMismoDigito}`;
+          }
+        </script>
+</body>
+</html>

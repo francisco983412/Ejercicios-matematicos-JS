@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <div>
+        <h2>leer un numero entero de 2 digitos y si terminar en 1 mostrar en pantalla su primer digito, 
+          si termina en 2 mostrar en pantalla la suma de sus digitos y si t
+          ermina en 3 mostrar en pantalla el producto de sus digitos</h2>
+        <label for="numberInput">Ingrese un número de 2 dígitos:</label>
+        <input type="number" id="numberInput" min="10" max="99"><br><br>
+      
+        <button onclick="realizarAccion()">Realizar Acción</button><br><br>
+      
+        <p id="resultado"></p>
+        <a href="interfaz1.html">Inicio</a>
+      
+        <script>
+          function realizarAccion() {
+            const num = document.getElementById('numberInput').value;
+            
+            // Obtener cada dígito individual
+            const digitos = num.toString().split('').map(Number);
+            
+            const ultimoDigito = digitos[1]; // Obtener el último dígito
+      
+            const resultado = document.getElementById('resultado');
+      
+            if (ultimoDigito === 1) {
+              resultado.textContent = `El primer dígito es: ${digitos[0]}`;
+            } else if (ultimoDigito === 2) {
+              const suma = digitos[0] + digitos[1];
+              resultado.textContent = `La suma de los dígitos es: ${suma}`;
+            } else if (ultimoDigito === 3) {
+              const producto = digitos[0] * digitos[1];
+              resultado.textContent = `El producto de los dígitos es: ${producto}`;
+            } else {
+              resultado.textContent = `El último dígito no es 1, 2 ni 3.`;
+            }
+          }
+        </script>
+</body>
+</html>

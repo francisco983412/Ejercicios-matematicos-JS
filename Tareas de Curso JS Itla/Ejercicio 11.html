@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <div>
+        <h2>leer un numero entero y determinar a cuanto es igual el promedio entero de sus digitos </h2>
+        <label for="numeroInput">Ingrese un número entero:</label>
+        <input type="number" id="numeroInput" min="0"><br><br>
+      
+        <button onclick="calcularPromedioDigitos()">Calcular</button><br><br>
+      
+        <p id="resultado"></p>
+        <a href="interfaz1.html">Inicio</a>
+      
+        <script>
+          function calcularPromedioDigitos() {
+            const numero = document.getElementById('numeroInput').value;
+      
+            // Convertir el número en un arreglo de dígitos
+            const digitos = Array.from(numero.toString()).map(Number);
+      
+            let sumaDigitos = 0;
+      
+            for (let digito of digitos) {
+              sumaDigitos += digito;
+            }
+      
+            const promedio = Math.floor(sumaDigitos / digitos.length);
+      
+            const resultado = document.getElementById('resultado');
+            resultado.textContent = `El promedio entero de los dígitos es: ${promedio}`;
+          }
+        </script>
+</body>
+</html>

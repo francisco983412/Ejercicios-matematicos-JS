@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <div>
+        <h2>leer numeros hasta que digite 0 y determinar a cuanto es igual el promedio de los numeros terminados en 5</h2>
+        <label for="numeroInput">Ingrese números (0 para terminar):</label>
+        <input type="number" id="numeroInput"><br><br>
+      
+        <button onclick="calcularPromedio()">Calcular</button><br><br>
+      
+        <p id="resultado"></p>
+        <a href="interfaz1.html">Inicio</a>
+      
+        <script>
+          function calcularPromedio() {
+            const numeros = [];
+            let numero;
+      
+            do {
+              numero = parseInt(document.getElementById('numeroInput').value);
+              numeros.push(numero);
+            } while (numero !== 0);
+      
+            // Eliminar el último elemento "0" del arreglo
+            numeros.pop();
+      
+            const numerosTerminadosEn5 = numeros.filter(num => num % 10 === 5);
+      
+            let suma = 0;
+            for (let num of numerosTerminadosEn5) {
+              suma += num;
+            }
+      
+            const promedio = numerosTerminadosEn5.length > 0 ? suma / numerosTerminadosEn5.length : 0;
+      
+            const resultado = document.getElementById('resultado');
+            resultado.textContent = `El promedio de los números terminados en 5 es: ${promedio}`;
+          }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <h2>leer un numero entero y determinar si la suma de sus digitoas es tambien un numero primo</h2>
+  <label for="numeroInput">Ingrese un número entero:</label>
+  <input type="number" id="numeroInput" min="0"><br><br>
+
+  <button onclick="verificarSumaDigitosPrimo()">Verificar</button><br><br>
+
+  <p id="resultado"></p>
+  <a href="interfaz1.html">Inicio</a>
+
+  <script>
+    function esPrimo(num) {
+      if (num <= 1) return false;
+      for (let i = 2; i * i <= num; i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+
+    function verificarSumaDigitosPrimo() {
+      const numero = document.getElementById('numeroInput').value;
+
+      // Convertir el número en un arreglo de dígitos
+      const digitos = Array.from(numero.toString()).map(Number);
+
+      // Sumar todos los dígitos del número
+      const sumaDigitos = digitos.reduce((acc, curr) => acc + curr, 0);
+
+      const resultado = document.getElementById('resultado');
+
+      if (esPrimo(sumaDigitos)) {
+        resultado.textContent = `La suma de los dígitos (${sumaDigitos}) es un número primo.`;
+      } else {
+        resultado.textContent = `La suma de los dígitos (${sumaDigitos}) no es un número primo.`;
+      }
+    }
+  </script>
+</body>
+</html>

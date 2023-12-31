@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <h2>Leer un numero entero 4 digitos y determinar si el primer digito es multiplo de alguno de los otros digitos</h2>
+    <label for="numberInput">Ingrese un número de 4 dígitos:</label>
+    <input type="number" id="numberInput" min="1000" max="9999"><br><br>
+  
+    <button onclick="verificarMultiplo()">Verificar</button><br><br>
+  
+    <p id="resultado"></p>
+    <a href="interfaz1.html">Inicio</a>
+  
+    <script>
+      function verificarMultiplo() {
+        const num = document.getElementById('numberInput').value;
+        
+        
+        const digitos = num.toString().split('').map(Number);
+        
+        const primerDigito = digitos[0];
+        const otrosDigitos = digitos.slice(1);
+  
+        let esMultiplo = false;
+  
+       
+        for (let i = 0; i < otrosDigitos.length; i++) {
+          if (otrosDigitos[i] !== 0 && primerDigito % otrosDigitos[i] === 0) {
+            esMultiplo = true;
+            break;
+          }
+        }
+  
+        const resultado = document.getElementById('resultado');
+        if (esMultiplo) {
+          resultado.textContent = `El primer dígito (${primerDigito}) es múltiplo de al menos uno de los otros dígitos.`;
+        } else {
+          resultado.textContent = `El primer dígito (${primerDigito}) no es múltiplo de ninguno de los otros dígitos.`;
+        }
+      }
+    </script>
+</body>
+</html>

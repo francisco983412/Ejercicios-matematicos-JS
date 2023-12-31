@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <div>
+        <h2>leer dos numeros enteros y determinar si la diferencia entre los dos es un numero par</h2>
+        <label for="num1">Primer número:</label>
+        <input type="number" id="num1"><br><br>
+        
+        <label for="num2">Segundo número:</label>
+        <input type="number" id="num2"><br><br>
+      
+        <button onclick="verificarDiferenciaPar()">Verificar</button><br><br>
+      
+        <p id="resultado"></p>
+        <a href="interfaz1.html">Inicio</a>
+      
+        <script>
+          function verificarDiferenciaPar() {
+            const num1 = parseInt(document.getElementById('num1').value);
+            const num2 = parseInt(document.getElementById('num2').value);
+      
+            const diferencia = Math.abs(num1 - num2); // Obtener el valor absoluto de la diferencia
+      
+            const resultado = document.getElementById('resultado');
+            if (diferencia % 2 === 0) {
+              resultado.textContent = `La diferencia entre los números (${diferencia}) es un número par.`;
+            } else {
+              resultado.textContent = `La diferencia entre los números (${diferencia}) no es un número par.`;
+            }
+          }
+    </script>
+</body>
+</html>

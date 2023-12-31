@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <div>
+        <h2>leer un numero entero y determinar a cuanto es igual el primero de sus digitos</h2>
+        <label for="numeroInput">Ingrese un número entero:</label>
+        <input type="number" id="numeroInput"><br><br>
+      
+        <button onclick="obtenerPrimerDigito()">Obtener</button><br><br>
+      
+        <p id="resultado"></p>
+        <a href="interfaz1.html">Inicio</a>
+      
+        <script>
+          function obtenerPrimerDigito() {
+            const numero = document.getElementById('numeroInput').value;
+      
+            const primerDigito = parseInt(numero.toString()[0]);
+      
+            const resultado = document.getElementById('resultado');
+            resultado.textContent = `El primer dígito del número es: ${primerDigito}`;
+          }
+        </script>
+</body>
+</html>

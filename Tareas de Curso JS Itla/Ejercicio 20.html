@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <h2>leer 10 numeros enteros, almacenados en un vector y determinar cuantas veces en el vector se encuentra 
+      el digito 2. no se olvide que el digito 2 puede estar varias veces en un mismo numero    </h2>
+
+  <label for="vectorInput">Ingrese 10 números enteros separados por comas:</label>
+  <input type="text" id="vectorInput"><br><br>
+
+  <button onclick="contarDigitoDos()">Calcular</button><br><br>
+
+  <p id="resultado"></p>
+  <a href="interfaz1.html">Inicio</a>
+
+  <script>
+    function contarDigitoDos() {
+      const vectorInput = document.getElementById('vectorInput').value;
+      const numeros = vectorInput.split(',').map(Number);
+
+      let contador = 0;
+
+      for (let num of numeros) {
+        const digitos = Array.from(Math.abs(num).toString()).map(Number);
+
+        for (let digito of digitos) {
+          if (digito === 2) {
+            contador++;
+          }
+        }
+      }
+
+      const resultado = document.getElementById('resultado');
+      resultado.textContent = `El dígito 2 aparece ${contador} veces en el vector.`;
+    }
+  </script>
+</body>
+</html>

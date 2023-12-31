@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <h2>leer numeros enteros hasta que digiten 0 determinar a cuanto es igual el promedio entero de los numeros primos leidos</h2>
+  <label for="numeroInput">Ingrese números (0 para terminar):</label>
+  <input type="number" id="numeroInput"><br><br>
+
+  <button onclick="calcularPromedioPrimos()">Calcular</button><br><br>
+
+  <p id="resultado"></p>
+  <a href="interfaz1.html">Inicio</a>
+
+  <script>
+    function esPrimo(num) {
+      if (num <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+
+    function calcularPromedioPrimos() {
+      const numeros = [];
+      let numero;
+
+      do {
+        numero = parseInt(document.getElementById('numeroInput').value);
+        numeros.push(numero);
+      } while (numero !== 0);
+
+      // Eliminar el último elemento "0" del arreglo
+      numeros.pop();
+
+      const numerosPrimos = numeros.filter(num => esPrimo(num));
+
+      let suma = 0;
+      for (let num of numerosPrimos) {
+        suma += num;
+      }
+
+      const promedio = numerosPrimos.length > 0 ? Math.floor(suma / numerosPrimos.length) : 0;
+
+      const resultado = document.getElementById('resultado');
+      resultado.textContent = `El promedio entero de los números primos es: ${promedio}`;
+    }
+  </script>
+</body>
+</html>

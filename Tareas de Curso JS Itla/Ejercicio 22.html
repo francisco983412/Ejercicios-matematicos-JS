@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <h2>leer 10 numeros enteros, almacenarlos en un vector y determinar cuantos es igual el cuadrado de cada uno de los numeros leidos</h2>
+
+  <label for="vectorInput">Ingrese 10 números enteros separados por comas:</label>
+  <input type="text" id="vectorInput"><br><br>
+
+  <button onclick="verificarCuadrados()">Calcular</button><br><br>
+
+  <p id="resultado"></p>
+  <a href="interfaz1.html">Inicio</a>
+
+  <script>
+    function verificarCuadrados() {
+      const vectorInput = document.getElementById('vectorInput').value;
+      const numeros = vectorInput.split(',').map(Number);
+
+      let contadorCuadrados = 0;
+
+      for (let num of numeros) {
+        if (num * num === num) {
+          contadorCuadrados++;
+        }
+      }
+
+      const resultado = document.getElementById('resultado');
+      resultado.textContent = `La cantidad de números iguales a su cuadrado es: ${contadorCuadrados}`;
+    }
+    </script>
+</body>
+</html>

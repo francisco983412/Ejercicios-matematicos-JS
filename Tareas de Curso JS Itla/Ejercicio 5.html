@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML y JavaScript</title>
+</head>
+<body>
+    <h2>leer dos numeros enteros y si la diferencia entre los dos numeros es par mostrar en pantalla la suma de los digitos de los numeros, 
+      si dicha diferencia es un numero primo menos que 10 entonces mostrar en pantalla el
+       producto de los dos numeros y si la diferencia entre ellos termina en 4 mostrar en pantalla todos los digitos por separado</h2>
+    <label for="num1">Primer número:</label>
+    <input type="number" id="num1"><br><br>
+    
+    <label for="num2">Segundo número:</label>
+    <input type="number" id="num2"><br><br>
+  
+    <button onclick="verificarCondiciones()">Verificar</button><br><br>
+  
+    <p id="resultado"></p>
+    <a href="interfaz1.html">Inicio</a>
+  
+    <script>
+      function esPrimo(num) {
+        if (num <= 1) return false;
+        for (let i = 2; i * i <= num; i++) {
+          if (num % i === 0) return false;
+        }
+        return true;
+      }
+  
+      function verificarCondiciones() {
+        const num1 = parseInt(document.getElementById('num1').value);
+        const num2 = parseInt(document.getElementById('num2').value);
+  
+        const diferencia = Math.abs(num1 - num2); // Obtener el valor absoluto de la diferencia
+  
+        const resultado = document.getElementById('resultado');
+        
+        if (diferencia % 2 === 0) {
+          // Si la diferencia es par, mostrar la suma de los dígitos
+          const sumaDigitos = [...(num1.toString() + num2.toString())].reduce((acc, digit) => acc + parseInt(digit), 0);
+          resultado.textContent = `La suma de los dígitos de los números es: ${sumaDigitos}`;
+        } else if (esPrimo(diferencia) && diferencia < 10) {
+          // Si la diferencia es un número primo menor que 10, mostrar el producto de los números
+          const producto = num1 * num2;
+          resultado.textContent = `El producto de los números es: ${producto}`;
+        } else if (diferencia % 10 === 4) {
+          // Si la diferencia termina en 4, mostrar los dígitos por separado
+          resultado.textContent = `El primer número separado: ${num1.toString().split('').join(' ')} 
+                                   El segundo número separado: ${num2.toString().split('').join(' ')}`;
+        } else {
+          resultado.textContent = `No se cumple ninguna condición específica.`;
+        }
+      }
+    </script>
+  </body>
+</html>
